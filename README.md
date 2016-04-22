@@ -87,6 +87,27 @@ const counterReducer = createReducer({
 
 In the previous example the `counterReducer` will only react to action that belongs to `counter` group. If an action of different type is fired, then only one comparison will be done for `counterReducer`.
 
+## All is working as expected
+
+```javascript
+const reducer = createReducer({
+  initialState: 0,
+  listenTo: [
+    'counter:INCREMENT',
+    'counter:DECREMENT'
+  ],
+  ['counter:INCREMENT']() {
+    return ++this.state;
+  },
+  ['counter:DECREMENT']() {
+    return --this.state;
+  }
+});
+
+reducer(0, 'counter:INCREMENT'); // => 1
+reducer(1, 'counter:DECREMENT'); // => 0
+```
+
 ## License
 The MIT License (MIT) - See file 'LICENSE' in this project
 
