@@ -3,18 +3,20 @@ import {
   isObject,
   isFunction,
   isString,
+  isUndefined,
   each,
   find,
   filter,
   forOwn,
-  bind
+  some
 } from 'lodash';
 
 import {
   NoListenToGiven,
   NoReducerCallback,
   InvalidAction,
-  TooManyReducerCallbacks
+  TooManyReducerCallbacks,
+  NoInitialStateGiven
 } from './errors';
 
 import Group from './Group';
@@ -32,10 +34,24 @@ export default class Reducer {
       throw new NoListenToGiven();
     }
 
+    if (isUndefined(this.initialState)) {
+      throw new NoInitialStateGiven();
+    }
+
     forOwn(opts, (val, key) => {
-      // TODO: make sure to import only callback functions
-      if (isFunction(opts[key])) {
-        this[key] = bind(val, this);
+      if (
+        isFunction(opts[key]) && (
+          some(this.listenTo, (actionArg) => {
+            const action = this.convertToAction(actionArg);
+
+            // TODO: is this really necessary? Make it faster!
+            return key === action.toString() ||
+              key === action.toMethodName() ||
+              key === action;
+          })
+        )
+      ) {
+        this[key] = val;
       }
     });
 
@@ -62,7 +78,7 @@ export default class Reducer {
 
       if (group && group.hasAction(action.type)) {
         // Execute the callback function
-        this.callAction(state, action);
+        return this.callAction(state, action);
       }
 
       return state;
@@ -73,7 +89,12 @@ export default class Reducer {
    * Call a reducer callback for given action.
    */
   callAction(state, action) {
-    return this.getActionCallbacks(action)[0].call(this, state, action);
+    const context = {
+      state,
+      action
+    };
+
+    return this.getActionCallbacks(action)[0].call(context, state, action);
   }
 
   /**
@@ -119,15 +140,15 @@ export default class Reducer {
    */
   startReactor() {
     each(this.listenTo, (actionArg) => {
-      const action = isString(actionArg) ? new Action(actionArg) : actionArg;
+      const action = this.convertToAction(actionArg);
 
       const group = new Group(this, action.group);
 
-      if (!this.hasGroup(group)) {
+      if (!this.hasGroup(group.name)) {
         this.groups.push(group);
       }
 
-      group.addAction(action);
+      this.getGroup(action.group).addAction(action);
     });
   }
 
@@ -142,6 +163,6 @@ export default class Reducer {
    * Get a group by name.
    */
   getGroup(groupName) {
-    return find(this.groups, (group) => group.name === groupName) || null;
+    return find(this.groups, (group) => group.name === groupName);
   }
 }

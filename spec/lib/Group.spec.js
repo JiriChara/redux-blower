@@ -13,7 +13,10 @@ describe('Group', () => {
           listenTo: [
             'counter/INCREMENT',
             'counter/DECREMENT'
-          ]
+          ],
+
+          ['counter:INCREMENT']() {},
+          ['counter:DECREMENT']() {},
         });
 
         returnValue = new Group(
@@ -25,6 +28,8 @@ describe('Group', () => {
       it('saves reference to reducer', () => {
         expect(returnValue.reducer).toBe(reducer);
       });
+
+      // TODO: add more specs
     });
   });
 });
