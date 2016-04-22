@@ -42,7 +42,7 @@ reducer(0, { type: 'counter:INCREMENT', payload: 2 }); // => 2
 reducer(5, { type: 'counter:DECREMENT', payload: 5 }); // => 0
 ```
 
-In the previous example the `counterReducer` will only react to action that belongs to `counter` group. If an action of different type is fired, then only one comparison will be done for `counterReducer`.
+In the previous example the `counterReducer` will only react to action that belongs to `counter` group. If an action of different type is fired, then only one comparison will be done for `counterReducer`. The group is detected based on action string.
 
 ## Installation
 
