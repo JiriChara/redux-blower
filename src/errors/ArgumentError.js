@@ -2,4 +2,4 @@ export function ArgumentError(msg) {
   this.name = 'ArgumentError';
   this.message = msg || 'Wrong arguments.';
 }
-ArgumentError.prototype = new Error();
+ArgumentError.prototype = Error.prototype;

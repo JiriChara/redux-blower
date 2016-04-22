@@ -2,4 +2,4 @@ export function NoReducerCallback(msg) {
   this.name = 'NoReducerCallback';
   this.message = msg || 'No reducer callback implemented for registered action.';
 }
-NoReducerCallback.prototype = new Error();
+NoReducerCallback.prototype = Error.prototype;
