@@ -67,20 +67,20 @@ export default class Reducer {
    * Returns a new reducer function.
    */
   build() {
-    return (state = this.initialState, argAction) => {
-      if (!isObject(argAction) || isUndefined(argAction.type)) {
+    return (state = this.initialState, payload) => {
+      if (!isObject(payload) || isUndefined(payload.type)) {
         throw new InvalidAction();
       }
 
-      const action = (isString(argAction.group)) ?
-        new Action(argAction.group, argAction.type) :
-        this.convertToAction(argAction.type);
+      const action = (isString(payload.group)) ?
+        new Action(payload.group, payload.type) :
+        this.convertToAction(payload.type);
 
       const group = this.getGroup(action.group);
 
       if (group && group.hasAction(action.type)) {
         // Execute the callback function
-        return this.callAction(state, action);
+        return this.callAction(state, action, payload);
       }
 
       return state;
@@ -90,13 +90,13 @@ export default class Reducer {
   /**
    * Call a reducer callback for given action.
    */
-  callAction(state, action) {
+  callAction(state, action, payload) {
     const context = {
       state,
-      action
+      action: payload
     };
 
-    return this.getActionCallbacks(action)[0].call(context, state, action);
+    return this.getActionCallbacks(action)[0].call(context, state, payload);
   }
 
   /**
