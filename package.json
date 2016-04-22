@@ -1,0 +1,69 @@
+{
+  "name": "redux-blower",
+  "version": "0.1.0",
+  "description": "Faster and nicer reducers for your Redux applications. Say \"NO!\" to switch statements!",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/mkdirp lib && ./node_modules/.bin/browserify src/index.js -t [ babelify --presets [es2015] ] --standalone ReduxBlower --outfile lib/redux-blower.js",
+    "clean": "rimraf lib",
+    "karma": "./node_modules/.bin/karma start",
+    "lint": "./node_modules/.bin/eslint src spec",
+    "test": "npm run lint && npm run karma",
+    "testAsync": "./node_modules/.bin/parallelshell 'npm run lint' 'npm run karma'",
+    "uglify": "./node_modules/.bin/uglifyjs lib/redux-blower.js -o lib/redux-blower.min.js",
+    "watch": "./node_modules/.bin/parallelshell 'npm run watch:js:build' 'npm run watch:js:uglify' 'npm run watch:js:test'",
+    "watch:js:build": "./node_modules/.bin/watch 'npm run build' src",
+    "watch:js:uglify": "./node_modules/.bin/watch 'npm run uglify' src",
+    "watch:js:test": "./node_modules/.bin/watch 'npm run testAsync' src spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JiriChara/redux-blower.git"
+  },
+  "keywords": [
+    "redux",
+    "reducer",
+    "performance",
+    "switch"
+  ],
+  "author": "Jiri Chara <me@jirichara.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JiriChara/redux-blower/issues"
+  },
+  "homepage": "https://github.com/JiriChara/redux-blower#readme",
+  "devDependencies": {
+    "babel-core": "^6.5.2",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "babel-runtime": "^6.3.19",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "browserify-istanbul": "^2.0.0",
+    "eslint": "1.10.3",
+    "eslint-config-airbnb": "0.1.0",
+    "eslint-plugin-import": "^0.8.0",
+    "jasmine": "^2.4.1",
+    "jasmine-expect": "^2.0.2",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.3",
+    "karma-coverage": "^0.5.5",
+    "karma-jasmine": "^0.3.8",
+    "karma-jasmine-matchers": "^2.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-story-reporter": "^0.3.1",
+    "mkdirp": "^0.5.1",
+    "parallelshell": "^2.0.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "rimraf": "^2.5.2",
+    "uglify-js": "^2.6.2",
+    "watch": "^0.17.1",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "lodash": "^4.11.1"
+  }
+}
