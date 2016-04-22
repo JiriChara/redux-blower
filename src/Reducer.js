@@ -14,7 +14,6 @@ import {
 import {
   NoListenToGiven,
   NoReducerCallback,
-  InvalidAction,
   TooManyReducerCallbacks,
   NoInitialStateGiven
 } from './errors';
@@ -69,12 +68,18 @@ export default class Reducer {
   build() {
     return (state = this.initialState, payload) => {
       if (!isObject(payload) || isUndefined(payload.type)) {
-        throw new InvalidAction();
+        return state;
       }
 
-      const action = (isString(payload.group)) ?
-        new Action(payload.group, payload.type) :
-        this.convertToAction(payload.type);
+      let action;
+
+      try {
+        action = (isString(payload.group)) ?
+          new Action(payload.group, payload.type) :
+          this.convertToAction(payload.type);
+      } catch (ignore) { // ignore unstandard actions
+        return state;
+      }
 
       const group = this.getGroup(action.group);
 

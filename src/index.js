@@ -15,7 +15,6 @@ import createReducer from './createReducer';
  * Export all errors
  */
 import ArgumentError from './errors/ArgumentError';
-import InvalidAction from './errors/InvalidAction';
 import InvalidActionType from './errors/InvalidActionType';
 import InvalidGroup from './errors/InvalidGroup';
 import NoInitialStateGiven from './errors/NoInitialStateGiven';
@@ -30,7 +29,6 @@ export {
   createActions,
   createReducer,
   ArgumentError,
-  InvalidAction,
   InvalidActionType,
   InvalidGroup,
   NoInitialStateGiven,

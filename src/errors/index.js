@@ -5,4 +5,3 @@ export { NoListenToGiven } from './NoListenToGiven';
 export { NoReducerCallback } from './NoReducerCallback';
 export { NoInitialStateGiven } from './NoInitialStateGiven';
 export { TooManyReducerCallbacks } from './TooManyReducerCallbacks';
-export { InvalidAction } from './InvalidAction';
