@@ -46,6 +46,7 @@
     "eslint": "1.10.3",
     "eslint-config-airbnb": "0.1.0",
     "eslint-plugin-import": "^0.8.0",
+    "istanbul": "^0.4.3",
     "jasmine": "^2.4.1",
     "jasmine-expect": "^2.0.2",
     "karma": "^0.13.22",
