@@ -27,7 +27,7 @@ const reducer = createReducer({
     return this.state + action.payload;
   },
   [dec](state, action) {
-    return state - action;
+    return state - action.payload;
   }
 });
 

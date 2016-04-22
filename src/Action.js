@@ -28,7 +28,6 @@ const SEPARATOR_REGEX_STRING = '[\\/:]';
  * foo/bar => group: foo, type: bar
  * foo/bar/baz => group: foo/bar, type: baz
  */
-// const ACTION_REGEX = /^([a-zA-Z\-_\/]+)[\/:]([a-zA-Z\-_]+.\w+)$/;
 const ACTION_REGEX = new RegExp(
   `^(${GROUP_REGEX_STRING})${SEPARATOR_REGEX_STRING}(${TYPE_REGEX_STRING})$`
 );
