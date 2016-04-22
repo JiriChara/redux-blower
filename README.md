@@ -3,6 +3,11 @@
 [![Test Coverage](https://codeclimate.com/github/JiriChara/redux-blower/badges/coverage.svg)](https://codeclimate.com/github/JiriChara/redux-blower/coverage)
 [![Issue Count](https://codeclimate.com/github/JiriChara/redux-blower/badges/issue_count.svg)](https://codeclimate.com/github/JiriChara/redux-blower)
 [![Dependency Status](https://gemnasium.com/badges/github.com/JiriChara/redux-blower.svg)](https://gemnasium.com/github.com/JiriChara/redux-blower)
+[![NPM Dowloads](https://img.shields.io/npm/dm/redux-blower.svg)](https://www.npmjs.com/package/redux-blower)
+[![NPM Version](https://img.shields.io/npm/v/redux-blower.svg)](https://www.npmjs.com/package/redux-blower)
+[![GitHub issues](https://img.shields.io/github/issues/JiriChara/redux-blower.svg)](https://github.com/JiriChara/redux-blower/issues)
+[![GitHub stars](https://img.shields.io/github/stars/JiriChara/redux-blower.svg)](https://github.com/JiriChara/redux-blower/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/JiriChara/redux-blower/master/LICENSE)
 
 ![redux-blower](https://raw.github.com/JiriChara/redux-blower/master/images/blower.jpg)
 
