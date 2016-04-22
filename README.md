@@ -8,8 +8,6 @@
 
 **redux-blower** is a tiny library that helps you to improve the readability and the performance of your [Redux](https://github.com/reactjs/redux) applications.
 
-:warning: **Caution** Still work in progress. Library will be finished in next couple of days!
-
 ## How?
 
 Typical [Redux](https://github.com/reactjs/redux) application has couple of reducers which are usually functions with big switch statements. When an action is triggered, Redux is going through ALL reducers, ALL switch statements and  ALL `case`s  in order to decide if something should happen. Imagine that you have a Redux application with 100 reducers of average 5 case callbacks. That would mean that for each triggered action up to 500 comparisons has to be made. Additionally reducers will most-likely end up as functions with high complexity and they are not easy to read. Now let me show you what **redux-blower** can do!
