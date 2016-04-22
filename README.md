@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/JiriChara/redux-blower.svg?branch=master)](https://travis-ci.org/JiriChara/redux-blower)
+[![Code Climate](https://codeclimate.com/github/JiriChara/redux-blower/badges/gpa.svg)](https://codeclimate.com/github/JiriChara/redux-blower)
+[![Test Coverage](https://codeclimate.com/github/JiriChara/redux-blower/badges/coverage.svg)](https://codeclimate.com/github/JiriChara/redux-blower/coverage)
+[![Issue Count](https://codeclimate.com/github/JiriChara/redux-blower/badges/issue_count.svg)](https://codeclimate.com/github/JiriChara/redux-blower)
+[![Dependency Status](https://gemnasium.com/badges/github.com/JiriChara/redux-blower.svg)](https://gemnasium.com/github.com/JiriChara/redux-blower)
+
 ![redux-blower](https://raw.github.com/JiriChara/redux-blower/master/images/blower.jpg)
 
 **redux-blower** is a tiny library that helps you to improve the readability and the performance of your [Redux](https://github.com/reactjs/redux) applications.
