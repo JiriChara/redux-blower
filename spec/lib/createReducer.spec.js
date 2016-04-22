@@ -16,7 +16,7 @@ describe('createReducer', () => {
   });
 
   it('returns new reducer function', () => {
-    expect(reducer(0, 'counter:INCREMENT')).toEqual(1);
-    expect(reducer(0, 'counter:DECREMENT')).toEqual(-1);
+    expect(reducer(0, { type: 'counter:INCREMENT' })).toEqual(1);
+    expect(reducer(0, { type: 'counter:DECREMENT' })).toEqual(-1);
   });
 });

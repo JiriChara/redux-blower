@@ -68,11 +68,13 @@ export default class Reducer {
    */
   build() {
     return (state = this.initialState, argAction) => {
-      const action = this.convertToAction(argAction);
-
-      if (!isObject(action) || !(action instanceof Action)) {
+      if (!isObject(argAction) || isUndefined(argAction.type)) {
         throw new InvalidAction();
       }
+
+      const action = (isString(argAction.group)) ?
+        new Action(argAction.group, argAction.type) :
+        this.convertToAction(argAction.type);
 
       const group = this.getGroup(action.group);
 

@@ -120,13 +120,13 @@ describe('Reducer', () => {
     });
 
     it('calls the increment action', () => {
-      expect(returnValue(0, 'counter:INCREMENT')).toEqual(1);
-      expect(returnValue(1, 'counter:INCREMENT')).toEqual(2);
+      expect(returnValue(0, { type: 'counter:INCREMENT' })).toEqual(1);
+      expect(returnValue(1, { type: 'counter:INCREMENT' })).toEqual(2);
     });
 
     it('calls the decrement action', () => {
-      expect(returnValue(0, 'counter:DECREMENT')).toEqual(-1);
-      expect(returnValue(1, 'counter:DECREMENT')).toEqual(0);
+      expect(returnValue(0, { type: 'counter:DECREMENT' })).toEqual(-1);
+      expect(returnValue(1, { type: 'counter:DECREMENT' })).toEqual(0);
     });
   });
 });
