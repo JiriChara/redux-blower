@@ -25,7 +25,7 @@ const actions = [
 
 const [inc, dec] = actions;
 
-const reducer = createReducer({
+const counterReducer = createReducer({
   initialState: 0,
   listenTo: actions,
   [inc]() {
@@ -41,8 +41,6 @@ reducer(5, { type: 'counter:DECREMENT', payload: 5 }); // => 0
 ```
 
 In the previous example the `counterReducer` will only react to action that belongs to `counter` group. If an action of different type is fired, then only one comparison will be done for `counterReducer`.
-
-## All is working as expected
 
 ## License
 The MIT License (MIT) - See file 'LICENSE' in this project
