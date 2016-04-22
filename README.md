@@ -56,31 +56,29 @@ const [
 
 // Now let's create a reducer:
 const counterReducer = createReducer({
-  initialState: {
-    value: 0
-  },
+  initialState: 0
 
   listenTo: [
     increment,
     decrement
   ],
 
-  counterIncrement(increment) {
-    return this.value + increment;
+  counterIncrement() {
+    return ++this.state;
   }
 
   // or:
   // ['counter:INCREMENT']() {
-  //   return this.value + increment;
+  //   return ++this.state;
   // }
 
   // or:
-  // [increment]() {
-  //   return this.value + increment;
+  // [increment](state, action) {
+  //   return ++state;
   // }
 
-  counterDecrement(decrement) {
-    return this.value + decrement;
+  counterDecrement() {
+    return --this.state;
   }
 });
 ```
