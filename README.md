@@ -18,6 +18,8 @@
 Typical [Redux](https://github.com/reactjs/redux) application has couple of reducers which are usually functions with big switch statements. When an action is triggered, Redux is going through ALL reducers, ALL switch statements and  ALL `case`s  in order to decide if something should happen. Imagine that you have a Redux application with 100 reducers of average 5 case callbacks. That would mean that for each triggered action up to 500 comparisons has to be made. Additionally reducers will most-likely end up as functions with high complexity and they are not easy to read. Now let me show you what **redux-blower** can do!
 
 ```javascript
+import createReducer from 'redux-blower';
+
 const actions = [
   'counter:INCREMENT',
   'counter:DECREMENT'
@@ -41,6 +43,12 @@ reducer(5, { type: 'counter:DECREMENT', payload: 5 }); // => 0
 ```
 
 In the previous example the `counterReducer` will only react to action that belongs to `counter` group. If an action of different type is fired, then only one comparison will be done for `counterReducer`.
+
+## Installation
+
+```
+npm install redux-blower
+```
 
 ## License
 The MIT License (MIT) - See file 'LICENSE' in this project
