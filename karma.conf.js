@@ -1,8 +1,8 @@
 // Karma configuration
 // Generated on Sat Nov 28 2015 16:28:50 GMT+0100 (CET)
-const istanbul = require('browserify-istanbul');
+var istanbul = require('browserify-istanbul');
 
-module.exports = (config) => {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
