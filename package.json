@@ -1,6 +1,6 @@
 {
   "name": "redux-blower",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Faster and nicer reducers for your Redux applications. Say \"NO!\" to switch statements!",
   "main": "lib/index.js",
   "scripts": {
