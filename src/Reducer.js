@@ -32,6 +32,7 @@ export default class Reducer {
   }
 
   hasHandler(action) {
-    return this.listenTo.hasOwnProperty(action.type);
+    return isObject(action) &&
+      this.listenTo.hasOwnProperty(action.type);
   }
 }
