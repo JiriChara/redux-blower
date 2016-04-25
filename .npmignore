@@ -20,3 +20,4 @@ karma.conf.js
 .gitignore
 .eslintrc
 .eslintignore
+benchmark

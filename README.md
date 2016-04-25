@@ -13,36 +13,36 @@
 
 **redux-blower** is a tiny library that helps you to improve the readability and the performance of your [Redux](https://github.com/reactjs/redux) applications.
 
-## How?
+## Motivation
 
-Typical [Redux](https://github.com/reactjs/redux) application has couple of reducers which are usually functions with big switch statements. When an action is triggered, Redux is going through ALL reducers, ALL switch statements and  ALL `case`s  in order to decide if something should happen. Imagine that you have a Redux application with 100 reducers of average 5 case callbacks. That would mean that for each triggered action up to 500 comparisons has to be made. Additionally reducers will most-likely end up as functions with high complexity and they are not easy to read. Now let me show you what **redux-blower** can do!
+Less code/better performance
+
+## Performance
+
+Reducer implemented with **redux-blower** is currently ~30% faster than regular switch statements reducer ([try it on your own](https://github.com/JiriChara/redux-blower/blob/master/benchmark/benchmark.js)).
+
+## How Does It Work?
 
 ```javascript
 import { createReducer } from 'redux-blower';
 
-const actions = [
-  'counter:INCREMENT',
-  'counter:DECREMENT'
-];
-
-const [inc, dec] = actions;
-
 const counterReducer = createReducer({
   initialState: 0,
-  listenTo: actions,
-  [inc]() {
-    return this.state + action.payload;
-  },
-  [dec](state, action) {
-    return state - action.payload;
+
+  listenTo: {
+    ['counter:INCREMENT'](state, action) {
+      return state + action.payload;
+    },
+
+    ['counter:DECREMENT']() {
+      return this.state - this.action.payload;
+    }
   }
 });
 
-reducer(0, { type: 'counter:INCREMENT', payload: 2 }); // => 2
-reducer(5, { type: 'counter:DECREMENT', payload: 5 }); // => 0
+counterReducer(0, { type: 'counter:INCREMENT', payload: 2 }); // => 2
+counterReducer(5, { type: 'counter:DECREMENT', payload: 5 }); // => 0
 ```
-
-In the previous example the `counterReducer` will only react to action that belongs to `counter` group. If an action of different type is fired, then only one comparison will be done for `counterReducer`. The group is detected based on action string.
 
 ## Installation
 

@@ -1,2 +1,3 @@
 node_modules
 karma.conf.js
+benchmark/benchmark.js
