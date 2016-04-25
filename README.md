@@ -15,7 +15,7 @@
 
 ## Motivation
 
-Less code/better performance
+Less code/better performance/100% test coverage
 
 ## Performance
 
