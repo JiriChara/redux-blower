@@ -1,3 +1,9 @@
+var _ = require('lodash');
+var platform = require('platform');
+var Benchmark = require('benchmark');
+var ReduxBlower = require('../dist/redux-blower.js');
+var Redux = require('redux');
+
 // Create some existing/non-existing actions
 var actions = [];
 var inc = true;
